@@ -53,7 +53,8 @@ pp14-rl-resilience/
 ├─ tests_pp14.py # environment unit tests
 └─ README.md # this file
 
----
+```
+
 ## Installation (Windows)
 
 1. **Clone the repo** (or create it on GitHub and drag-drop the files):  
