@@ -37,6 +37,7 @@ The workflow is:
 
 ## Repository Structure
 
+```text
 pp14-rl-resilience/
 ├─ pp14_ddpg/ # core package
 │ ├─ init.py
@@ -63,12 +64,12 @@ pp14-rl-resilience/
    git clone https://github.com/<your-username>/<repo-name>.git
    cd <repo-name>
 
-## Create a Conda environment
+2. Create a Conda environment
 conda create -n pp14 python=3.10 -y
 conda activate pp14
 
 
-## Create a Conda environment
+3. Install dependencies
 
 pip install -e .
 pip install pandapower andes torch matplotlib tqdm pandas
