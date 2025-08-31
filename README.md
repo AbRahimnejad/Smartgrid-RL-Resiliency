@@ -64,7 +64,7 @@ pp14-rl-resilience/
   ```
 
 2. Create a Conda environment
-  ```powershell
+   ```powershell
   conda create -n pp14 python=3.10 -y
   conda activate pp14
   ```
