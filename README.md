@@ -1,3 +1,4 @@
+---
 # PP14-RL-Resilience  
 **IEEE-14 Power System Resilience with DDPG, Pandapower Surrogate, and ANDES Validation**
 
@@ -37,7 +38,7 @@ The workflow is:
 
 ## Repository Structure
 
-```
+```text
 pp14-rl-resilience/
 ├─ pp14_ddpg/ # core package
 │ ├─ init.py
@@ -52,7 +53,7 @@ pp14-rl-resilience/
 ├─ tests_pp14.py # environment unit tests
 └─ README.md # this file
 
-
+---
 ## Installation (Windows)
 
 1. **Clone the repo** (or create it on GitHub and drag-drop the files):  
@@ -147,4 +148,4 @@ If you use this repository in academic work, please cite:
 
 - [ANDES: Xu et al., 2020+](https://doi.org/10.1109/TPWRS.2020.3022980)
 
-
+---
