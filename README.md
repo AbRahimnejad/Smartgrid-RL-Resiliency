@@ -37,7 +37,7 @@ The workflow is:
 
 ## Repository Structure
 
-```text
+```
 pp14-rl-resilience/
 ├─ pp14_ddpg/ # core package
 │ ├─ init.py
@@ -52,10 +52,6 @@ pp14-rl-resilience/
 ├─ tests_pp14.py # environment unit tests
 └─ README.md # this file
 
-
-
-
----
 
 ## Installation (Windows)
 
