@@ -74,7 +74,7 @@ pip install pandapower andes torch matplotlib tqdm pandas
 
 
 ## Usage (Windows)
-## 1. Run sanity tests
+1. Run sanity tests
 
 Check that the environment is stable and attacks trigger properly:
 
@@ -82,7 +82,7 @@ Check that the environment is stable and attacks trigger properly:
 python tests_pp14.py
 
 
-## Expected output:
+Expected output:
 [PASS] noattack_stable_frequency
 [PASS] fdia_ids_triggers
 [PASS] laa_open_loop_drop_and_recover
@@ -90,11 +90,11 @@ python tests_pp14.py
 4/4 tests passed
 
 
-## 2. Train the RL agent (surrogate)
+2. Train the RL agent (surrogate)
 
 python run_pp14_ddpg.py
 
-## Artifacts Produced
+Artifacts Produced
 
 - **pp14_ddpg_training.png** → Learning curves (critic loss, eval returns)  
 - **pp14_ddpg_actor.pt**, **pp14_ddpg_critic.pt** → Trained DDPG models (PyTorch state_dicts)  
@@ -105,7 +105,7 @@ python run_pp14_ddpg.py
 - **pp14_final_Kp_from_ddpg_run.txt** → Tuned proportional baseline controller (Kp)  
 
 
-## 3. Replay in ANDES (dynamic validation)
+3. Replay in ANDES (dynamic validation)
 
 After training, validate the policy in ANDES:
 
