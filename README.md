@@ -66,7 +66,7 @@ pp14-rl-resilience/
   ```bash
   conda create -n pp14 python=3.10 -y
   conda activate pp14
-  '''bash
+  
 
 
 4. Install dependencies
