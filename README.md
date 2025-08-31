@@ -1,4 +1,4 @@
-
+````markdown
 # PP14-RL-Resilience  
 **IEEE-14 Power System Resilience with DDPG, Pandapower Surrogate, and ANDES Validation**
 
@@ -41,7 +41,7 @@ The workflow is:
 ```text
 pp14-rl-resilience/
 ├─ pp14_ddpg/ # core package
-│ ├─ init.py
+│ ├─ __init__.py
 │ ├─ config.py # system + RL hyperparameters
 │ ├─ env.py # IEEE-14 + DER/ESS + swing proxy
 │ ├─ agent.py # DDPG implementation
@@ -52,105 +52,129 @@ pp14-rl-resilience/
 ├─ run_andes_replay.py # ANDES validation with exported traces
 ├─ tests_pp14.py # environment unit tests
 └─ README.md # this file
+````
 
-```
+---
 
 ## Installation (Windows)
 
-1. **Clone the repo** (or create it on GitHub and drag-drop the files):  
+1. **Clone the repo** (or create it on GitHub and drag-drop the files):
+
    ```powershell
    git clone https://github.com/<your-username>/<repo-name>.git
    cd <repo-name>
+   ```
 
-2. Create a Conda environment
-conda create -n pp14 python=3.10 -y
-conda activate pp14
+2. **Create a Conda environment**
 
+   ```powershell
+   conda create -n pp14 python=3.10 -y
+   conda activate pp14
+   ```
 
+3. **Install dependencies**
 
+   ```powershell
+   pip install -e .
+   pip install pandapower andes torch matplotlib tqdm pandas
+   ```
 
-3. Install dependencies
-pip install -e .
-pip install pandapower andes torch matplotlib tqdm pandas
-```
+---
 
 ## Usage (Windows)
-1. Run sanity tests
+
+### 1. Run sanity tests
 
 Check that the environment is stable and attacks trigger properly:
 
-
+```powershell
 python tests_pp14.py
+```
 
+**Expected output:**
 
-Expected output:
+```
 [PASS] noattack_stable_frequency
 [PASS] fdia_ids_triggers
 [PASS] laa_open_loop_drop_and_recover
 [PASS] action_rate_limit
 4/4 tests passed
+```
 
+---
 
-2. Train the RL agent (surrogate)
+### 2. Train the RL agent (surrogate)
 
+```powershell
 python run_pp14_ddpg.py
+```
 
-Artifacts Produced
+**Artifacts Produced:**
 
-- **pp14_ddpg_training.png** → Learning curves (critic loss, eval returns)  
-- **pp14_ddpg_actor.pt**, **pp14_ddpg_critic.pt** → Trained DDPG models (PyTorch state_dicts)  
-- **pp14_surrogate_metrics.csv** → Scenario metrics (NN vs Kp across attacks)  
-- **pp14_mc_metrics_surrogate.csv** → Monte Carlo robustness sweeps (multiple seeds & operating points)  
-- **pp14_DDPG_[LINE|LAA|FDIA]_df.png** → Frequency traces under different attack scenarios  
-- **traces/trace_[NN|KP]_[scenario]_RAL1.csv** → Exported action traces (NN policy vs Kp baseline)  
-- **pp14_final_Kp_from_ddpg_run.txt** → Tuned proportional baseline controller (Kp)  
+* **pp14\_ddpg\_training.png** → Learning curves (critic loss, eval returns)
+* **pp14\_ddpg\_actor.pt**, **pp14\_ddpg\_critic.pt** → Trained DDPG models (PyTorch state\_dicts)
+* **pp14\_surrogate\_metrics.csv** → Scenario metrics (NN vs Kp across attacks)
+* **pp14\_mc\_metrics\_surrogate.csv** → Monte Carlo robustness sweeps (multiple seeds & operating points)
+* **pp14\_DDPG\_\[LINE|LAA|FDIA]\_df.png** → Frequency traces under different attack scenarios
+* **traces/trace\_\[NN|KP]\_\[scenario]\_RAL1.csv** → Exported action traces (NN policy vs Kp baseline)
+* **pp14\_final\_Kp\_from\_ddpg\_run.txt** → Tuned proportional baseline controller (Kp)
 
+---
 
-3. Replay in ANDES (dynamic validation)
+### 3. Replay in ANDES (dynamic validation)
 
 After training, validate the policy in ANDES:
 
-
+```powershell
 python run_andes_replay.py --andes_case ieee14.json --traces_dir traces
+```
+
+---
 
 ## ANDES Validation
 
 This workflow bridges the surrogate environment (pandapower + swing proxy) with a dynamic simulator (ANDES):
 
-- Load the IEEE-14 dynamic case in ANDES.  
-- Replay exported action sequences (from NN policy and Kp baseline).  
-- Generate Δf(t), V(t), and other dynamic plots.  
-- Output validation CSV metrics.  
+* Load the IEEE-14 dynamic case in ANDES.
+* Replay exported action sequences (from NN policy and Kp baseline).
+* Generate Δf(t), V(t), and other dynamic plots.
+* Output validation CSV metrics.
 
 ### Calibration Workflow
-1. Run baseline Kp controller in both surrogate and ANDES.  
-2. Compare key dynamic metrics:  
-   - Frequency nadir  
-   - ROCOF  
-   - Recovery time  
-3. Adjust `SWING_GAIN` in `config.py` until surrogate error ≤ 10%.  
+
+1. Run baseline Kp controller in both surrogate and ANDES.
+2. Compare key dynamic metrics:
+
+   * Frequency nadir
+   * ROCOF
+   * Recovery time
+3. Adjust `SWING_GAIN` in `config.py` until surrogate error ≤ 10%.
 
 ---
 
 ## Development Notes
 
-- **Clear Python cache** to ensure new changes are applied:  
-  ```bash
+* **Clear Python cache** to ensure new changes are applied:
+
+  ```powershell
   rmdir /s /q __pycache__
+  ```
 
-- To remove environment:
+* **Remove Conda environment** if needed:
 
-conda deactivate
-conda remove -n pp14 --all
+  ```powershell
+  conda deactivate
+  conda remove -n pp14 --all
+  ```
 
+---
 
 ## Citation
 
-
 If you use this repository in academic work, please cite:
 
-- [pandapower: IEEE Transactions on Power Systems, 2018](https://doi.org/10.1109/TPWRS.2018.2829021)
+* [pandapower: IEEE Transactions on Power Systems, 2018](https://doi.org/10.1109/TPWRS.2018.2829021)
+* [ANDES: Xu et al., 2020+](https://doi.org/10.1109/TPWRS.2020.3022980)
 
-- [ANDES: Xu et al., 2020+](https://doi.org/10.1109/TPWRS.2020.3022980)
-
+```
 
