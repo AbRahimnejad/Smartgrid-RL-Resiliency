@@ -63,14 +63,14 @@ pp14-rl-resilience/
    cd <repo-name>
   
 2. Create a Conda environment
-  ```powershell
+  ```bash
   conda create -n pp14 python=3.10 -y
   conda activate pp14
-  
+  '''bash
 
 
 4. Install dependencies
-```powershell
+
 pip install -e .
 pip install pandapower andes torch matplotlib tqdm pandas
 
@@ -80,7 +80,7 @@ pip install pandapower andes torch matplotlib tqdm pandas
 
 Check that the environment is stable and attacks trigger properly:
 
-```powershell
+
 python tests_pp14.py
 
 
@@ -93,7 +93,7 @@ Expected output:
 
 
 2. Train the RL agent (surrogate)
-```powershell
+
 python run_pp14_ddpg.py
 
 Artifacts Produced
@@ -111,7 +111,7 @@ Artifacts Produced
 
 After training, validate the policy in ANDES:
 
-```powershell
+
 python run_andes_replay.py --andes_case ieee14.json --traces_dir traces
 
 ## ANDES Validation
@@ -138,8 +138,9 @@ This workflow bridges the surrogate environment (pandapower + swing proxy) with 
 - **Clear Python cache** to ensure new changes are applied:  
   ```bash
   rmdir /s /q __pycache__
+
 - To remove environment:
-```powershell
+
 conda deactivate
 conda remove -n pp14 --all
 
