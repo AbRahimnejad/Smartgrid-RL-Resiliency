@@ -72,10 +72,10 @@ pp14-rl-resilience/
 
 
 3. Install dependencies
-
-pip install -e .
-pip install pandapower andes torch matplotlib tqdm pandas
-
+  ```powershell
+  pip install -e .
+  pip install pandapower andes torch matplotlib tqdm pandas
+  ```
 
 ## Usage (Windows)
 1. Run sanity tests
