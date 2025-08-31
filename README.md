@@ -61,7 +61,7 @@ pp14-rl-resilience/
    ```powershell
    git clone https://github.com/<your-username>/<repo-name>.git
    cd <repo-name>
-  ```
+```
 
 2. Create a Conda environment
    ```powershell
