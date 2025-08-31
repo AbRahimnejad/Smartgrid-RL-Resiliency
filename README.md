@@ -63,10 +63,11 @@ pp14-rl-resilience/
    cd <repo-name>
   
 2. Create a Conda environment
+  ---
   ```bash
   conda create -n pp14 python=3.10 -y
   conda activate pp14
-  
+  ---
 
 
 4. Install dependencies
