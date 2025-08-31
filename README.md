@@ -1,4 +1,3 @@
-````markdown
 # PP14-RL-Resilience  
 **IEEE-14 Power System Resilience with DDPG, Pandapower Surrogate, and ANDES Validation**
 
