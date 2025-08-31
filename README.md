@@ -63,17 +63,16 @@ pp14-rl-resilience/
    cd <repo-name>
 
 2. Create a Conda environment
-   ```powershell
-  conda create -n pp14 python=3.10 -y
-  conda activate pp14
+conda create -n pp14 python=3.10 -y
+conda activate pp14
+
 
 
 
 3. Install dependencies
-  ```powershell
-  pip install -e .
-  pip install pandapower andes torch matplotlib tqdm pandas
-
+pip install -e .
+pip install pandapower andes torch matplotlib tqdm pandas
+```
 
 ## Usage (Windows)
 1. Run sanity tests
